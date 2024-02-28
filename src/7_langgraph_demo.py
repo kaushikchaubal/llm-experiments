@@ -10,10 +10,13 @@ import json
 from langchain_core.messages import FunctionMessage
 from langgraph.graph import StateGraph, END
 from langchain_core.messages import HumanMessage
+from langchain.agents import tool
+import requests
 
 
 class AgentState(TypedDict):
     messages: Annotated[Sequence[BaseMessage], operator.add]
+
 
 # Define the function that determines whether to continue or not
 def should_continue(state):
@@ -28,9 +31,9 @@ def should_continue(state):
 
 
 # Define the function that calls the model
-def call_model(state):
+def call_agent(state):
     messages = state['messages']
-    response = model.invoke(messages)
+    response = agent.invoke(messages)
     # We return a list, because this will get added to the existing list
     return {"messages": [response]}
 
@@ -54,57 +57,66 @@ def call_tool(state):
     return {"messages": [function_message]}
 
 
+@tool
+def age_of_person(name: str):
+    """This method predicts the age of a person based on their name"""
+
+    r1 = requests.get('https://api.agify.io?name={}'.format(name))
+    age_response = json.loads(r1.content.decode("utf-8"))
+    return age_response['age']
+
+
+@tool
+def gender_of_person(name: str):
+    """This method predicts the gender of a person based on their name"""
+
+    r2 = requests.get('https://api.genderize.io/?name={}'.format(name))
+    gender_response = json.loads(r2.content.decode("utf-8"))
+    return gender_response['gender']
+
+
+@tool
+def nationality_of_person(name: str):
+    """This method predicts the nationality of a person based on their name"""
+
+    r3 = requests.get('https://api.nationalize.io?name={}'.format(name))
+    nationality_response = json.loads(r3.content.decode("utf-8"))
+    return nationality_response['country'][0]['country_id']
+
+
 if __name__ == '__main__':
-    tools = [TavilySearchResults(max_results=1)]
+    tools = [age_of_person, gender_of_person, nationality_of_person]
 
     tool_executor = ToolExecutor(tools)
-    model = ChatOpenAI(temperature=0, streaming=True)
+    llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0, streaming=True)
 
-    functions = [convert_to_openai_function(t) for t in tools]
-    model = model.bind_functions(functions)
+    agent = llm.bind_functions(tools)
 
     # Define a new graph
     workflow = StateGraph(AgentState)
 
     # Define the two nodes we will cycle between
-    workflow.add_node("agent", call_model)
+    workflow.add_node("agent", call_agent)
     workflow.add_node("action", call_tool)
 
-    # Set the entrypoint as `agent`
-    # This means that this node is the first one called
-    workflow.set_entry_point("agent")
+    # # Set the entrypoint as `agent`
+    # # This means that this node is the first one called
+    # workflow.set_entry_point("agent")
 
     # We now add a conditional edge
     workflow.add_conditional_edges(
-        # First, we define the start node. We use `agent`.
-        # This means these are the edges taken after the `agent` node is called.
         "agent",
-        # Next, we pass in the function that will determine which node is called next.
         should_continue,
-        # Finally we pass in a mapping.
-        # The keys are strings, and the values are other nodes.
-        # END is a special node marking that the graph should finish.
-        # What will happen is we will call `should_continue`, and then the output of that
-        # will be matched against the keys in this mapping.
-        # Based on which one it matches, that node will then be called.
-        {
-            # If `tools`, then we call the tool node.
+        conditional_edge_mapping={
             "continue": "action",
-            # Otherwise we finish.
             "end": END
         }
     )
 
-    # We now add a normal edge from `tools` to `agent`.
-    # This means that after `tools` is called, `agent` node is called next.
     workflow.add_edge('action', 'agent')
-
-    # Finally, we compile it!
-    # This compiles it into a LangChain Runnable,
-    # meaning you can use it as you would any other runnable
     app = workflow.compile()
 
-    inputs = {"messages": [HumanMessage(content="Whats' the weather in London like?")]}
+    inputs = {"messages": [HumanMessage(content="Tell me more about Davide")]}
 
     for output in app.stream(inputs):
         for key, value in output.items():
