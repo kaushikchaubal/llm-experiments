@@ -8,29 +8,33 @@ import json
 
 
 @tool
-def personal_details_based_on_name(name: str) -> int:
-    """This method predicts the age, gender and the nationality of a person
-    based on their name using 3 APIs"""
-
-    response = {}
+def age_of_person(name: str):
+    """This method predicts the age of a person based on their name"""
 
     r1 = requests.get('https://api.agify.io?name={}'.format(name))
     age_response = json.loads(r1.content.decode("utf-8"))
-    response['age'] = age_response['age']
+    return age_response['age']
+
+@tool
+def gender_of_person(name: str):
+    """This method predicts the gender of a person based on their name"""
 
     r2 = requests.get('https://api.genderize.io/?name={}'.format(name))
     gender_response = json.loads(r2.content.decode("utf-8"))
-    response['gender'] = gender_response['gender']
+    return gender_response['gender']
+
+@tool
+def nationality_of_person(name: str):
+    """This method predicts the nationality of a person based on their name"""
 
     r3 = requests.get('https://api.nationalize.io?name={}'.format(name))
     nationality_response = json.loads(r3.content.decode("utf-8"))
-    response['nationality'] = nationality_response['country'][0]['country_id']
+    return nationality_response['country'][0]['country_id']
 
-    return response
 
 if __name__ == '__main__':
     llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
-    tools = [personal_details_based_on_name]
+    tools = [age_of_person, gender_of_person, nationality_of_person]
     llm_with_tools = llm.bind_functions(tools)
 
     # Refer to https://smith.langchain.com/hub/hwchase17/openai-tools-agent
