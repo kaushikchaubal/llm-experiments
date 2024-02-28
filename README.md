@@ -9,7 +9,8 @@ This repo that captures experiments with OpenAI models and other LLM-related fra
 4. To run `4_youtube_demo.py`, set the OPENAI_API_KEY and the TOKENIZERS_PARALLELISM=false env variables
 5. To run `5_agents_demo.py`, set the OPENAI_API_KEY env variable
 6. To run `6_agents_with_external_apis_demo.py`, set the OPENAI_API_KEY env variable
-7. To run `7_langgraph_demo.py`, set the OPENAI_API_KEY and the TAVILY_API_KEY env variables
+7. To run `7_langgraph_demo.py`, set the OPENAI_API_KEY env variable
+8. To run `8_langgraph_tavily_demo.py`, set the OPENAI_API_KEY and the TAVILY_API_KEY env variables
 
 ## 1_openai_api_demo - prompt and response
 Prompt:
@@ -112,7 +113,19 @@ Davide is a 47-year-old male from Italy.
 ## 7_langgraph_demo - prompts and responses
 Prompt:
 ```commandline
-Whats' the weather in London like?
+Tell me more about Davide
+```
+
+Response
+```commandline
+Davide is a 47-year-old male from Italy.
+```
+
+
+## 8_langgraph_tavily_demo - prompts and responses
+Prompt:
+```commandline
+Whats's the weather in London like?
 ```
 
 Response:
