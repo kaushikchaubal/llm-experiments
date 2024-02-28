@@ -1,0 +1,8 @@
+langchain==0.1.9
+langchain_openai
+langchain_core
+langchainhub
+openai
+tavily-python
+langgraph
+langchain-community
