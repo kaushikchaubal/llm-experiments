@@ -3,14 +3,20 @@
 This repo that captures experiments with OpenAI models and other LLM-related frameworks
 
 ## How to run
-1. To run `1_openai_api_demo.py`, set the OPENAI_API_KEY env variable
-2. To run `2_langchain_demo.py`, set the OPENAI_API_KEY env variable
-3. To run `3_pdf_demo.py`, set the OPENAI_API_KEY and the TOKENIZERS_PARALLELISM=false env variables
-4. To run `4_youtube_demo.py`, set the OPENAI_API_KEY and the TOKENIZERS_PARALLELISM=false env variables
-5. To run `5_agents_demo.py`, set the OPENAI_API_KEY env variable
-6. To run `6_agents_with_external_apis_demo.py`, set the OPENAI_API_KEY env variable
-7. To run `7_langgraph_demo.py`, set the OPENAI_API_KEY env variable
-8. To run `8_langgraph_tavily_demo.py`, set the OPENAI_API_KEY and the TAVILY_API_KEY env variables
+1. To run [`1_openai_api_demo.py`](#1_openai_api_demo---prompt-and-response), set the OPENAI_API_KEY env variable
+2. To run [`2_langchain_demo.py`](#2_langchain_demo---prompt-and-response), set the OPENAI_API_KEY env variable
+3. To run [`3_pdf_demo.py`](#3_pdf_demo---prompt-and-response), set the OPENAI_API_KEY and the TOKENIZERS_PARALLELISM=false env variables
+4. To run [`4_youtube_demo.py`](#4_youtube_demo---prompt-and-response), set the OPENAI_API_KEY and the TOKENIZERS_PARALLELISM=false env variables
+5. To run [`5_agents_demo.py`](#5_agents_demo---prompts-and-responses), set the OPENAI_API_KEY env variable
+6. To run [`6_agents_with_external_apis_demo.py`](#6_agents_with_external_apis_demopy---prompt-and-response), set the OPENAI_API_KEY env variable
+7. To run [`7_langgraph_demo.py`](#7_langgraph_demo---prompts-and-responses), set the OPENAI_API_KEY env variable
+8. To run [`8_langgraph_tavily_demo.py`](#8_langgraph_tavily_demo---prompts-and-responses), set the OPENAI_API_KEY and the TAVILY_API_KEY env variables
+
+Note about LangSmith - to be able to use LangSmith's tracing capabilities, you will have to set the following env variables:
+1. LANGCHAIN_TRACING_V2=true
+2. LANGCHAIN_ENDPOINT="https://api.smith.langchain.com"
+3. LANGCHAIN_API_KEY="<your-api-key>"
+4. LANGCHAIN_PROJECT="<name-of-project>"
 
 ## 1_openai_api_demo - prompt and response
 Prompt:
@@ -110,6 +116,10 @@ Response
 Davide is estimated to be around 47 years old. The name Davide is most commonly associated with males, with a probability of 1.0. In terms of nationality, the name Davide is most likely associated with Italy (probability of 0.649), followed by Switzerland, Portugal, Belgium, and Luxembourg.
 
 ```
+
+Note - I also attached this run to LangSmith to use Tracing. This is the visual that LangSmith created for this run:
+
+![langsmith_screenshot.png](resources/langsmith_screenshot.png)
 
 ## 7_langgraph_demo - prompts and responses
 Prompt:
