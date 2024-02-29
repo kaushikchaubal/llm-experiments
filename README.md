@@ -107,7 +107,8 @@ Tell me more about Davide
 
 Response
 ```commandline
-Davide is a 47-year-old male from Italy.
+Davide is estimated to be around 47 years old. The name Davide is most commonly associated with males, with a probability of 1.0. In terms of nationality, the name Davide is most likely associated with Italy (probability of 0.649), followed by Switzerland, Portugal, Belgium, and Luxembourg.
+
 ```
 
 ## 7_langgraph_demo - prompts and responses
@@ -118,7 +119,8 @@ Tell me more about Davide
 
 Response
 ```commandline
-Davide is a 47-year-old male from Italy.
+Davide is a male name and is most commonly associated with individuals who are around 47 years old. The name Davide is most likely of Italian origin, with a probability of 64.9%. It is also associated with other nationalities such as Swiss (8.4%), Portuguese (3.0%), Belgian (1.1%), and Luxembourgish (1.1%).
+
 ```
 
 

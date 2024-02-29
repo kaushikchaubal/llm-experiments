@@ -13,7 +13,7 @@ def age_of_person(name: str):
 
     r1 = requests.get('https://api.agify.io?name={}'.format(name))
     age_response = json.loads(r1.content.decode("utf-8"))
-    return age_response['age']
+    return age_response
 
 @tool
 def gender_of_person(name: str):
@@ -21,7 +21,7 @@ def gender_of_person(name: str):
 
     r2 = requests.get('https://api.genderize.io/?name={}'.format(name))
     gender_response = json.loads(r2.content.decode("utf-8"))
-    return gender_response['gender']
+    return gender_response
 
 @tool
 def nationality_of_person(name: str):
@@ -29,7 +29,7 @@ def nationality_of_person(name: str):
 
     r3 = requests.get('https://api.nationalize.io?name={}'.format(name))
     nationality_response = json.loads(r3.content.decode("utf-8"))
-    return nationality_response['country'][0]['country_id']
+    return nationality_response
 
 
 if __name__ == '__main__':
