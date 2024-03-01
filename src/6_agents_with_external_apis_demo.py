@@ -35,7 +35,7 @@ def nationality_of_person(name: str):
 if __name__ == '__main__':
     llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
     tools = [age_of_person, gender_of_person, nationality_of_person]
-    llm.bind_functions(tools)
+    llm.bind_tools(tools)
 
     # Refer to https://smith.langchain.com/hub/hwchase17/openai-tools-agent
     system_prompt = hub.pull("hwchase17/openai-functions-agent")
