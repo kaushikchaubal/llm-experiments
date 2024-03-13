@@ -11,7 +11,7 @@ This repo that captures experiments with OpenAI models and other LLM-related fra
 6. To run [`6_agents_with_external_apis_demo.py`](#6_agents_with_external_apis_demopy---prompt-and-response), set the OPENAI_API_KEY env variable
 7. To run [`7_langgraph_demo.py`](#7_langgraph_demo---prompts-and-responses), set the OPENAI_API_KEY env variable
 8. To run [`8_langgraph_tavily_demo.py`](#8_langgraph_tavily_demo---prompts-and-responses), set the OPENAI_API_KEY and the TAVILY_API_KEY env variables
-9. To run {`9_pydantic_demo.py`],  set the OPENAI_API_KEY env variable
+9. To run [`9_pydantic_demo.py`],  set the OPENAI_API_KEY env variable
 
 Note about LangSmith - to be able to use LangSmith's tracing capabilities, you will have to set the following env variables:
 1. LANGCHAIN_TRACING_V2=true
@@ -150,21 +150,21 @@ The weather in London is currently transitioning to milder, wetter, and windier 
 Prompt:
 ```commandline
 India wicketkeeper Rishabh Pant has been passed fit to play in the Indian Premier League (IPL) 
-    after a 14-month absence from cricket.
+after a 14-month absence from cricket.
 
-        Pant, 26, has not played since being injured in a serious car accident in December 2022.
-        
-        It has been confirmed that Pant will play for Delhi Capitals in the upcoming IPL season, which starts on 22 
-        March.
-        
-        Should Pant show he can keep wicket well, he could feature in India's squad for the Men's T20 World Cup in June.
-        
-        The Board of Control for Cricket in India (BCCI) said in a statement posted on X: "After undergoing an 
-        extensive 14-month rehab and recovery process, following a life-threatening road mishap on December 30th, 
-        2022, Rishabh Pant has now been declared fit as a wicketkeeper batter for the upcoming TATA IPL 2024.
+Pant, 26, has not played since being injured in a serious car accident in December 2022.
+
+It has been confirmed that Pant will play for Delhi Capitals in the upcoming IPL season, which starts on 22 
+March.
+
+Should Pant show he can keep wicket well, he could feature in India's squad for the Men's T20 World Cup in June.
+
+The Board of Control for Cricket in India (BCCI) said in a statement posted on X: "After undergoing an 
+extensive 14-month rehab and recovery process, following a life-threatening road mishap on December 30th, 
+2022, Rishabh Pant has now been declared fit as a wicketkeeper batter for the upcoming TATA IPL 2024.
 ```
 
 Response:
 ```commandline
-Positive sentiment
+{"sentiment":"Positive sentiment","language":"en"}
 ```

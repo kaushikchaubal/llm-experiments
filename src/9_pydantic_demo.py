@@ -41,6 +41,6 @@ if __name__ == '__main__':
 
     response = tagging_chain.invoke({"input": user_prompt})
 
-    print(response)
+    print(response.additional_kwargs['tool_calls'][0]['function']['arguments'])
 
 
