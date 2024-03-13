@@ -11,7 +11,7 @@ This repo that captures experiments with OpenAI models and other LLM-related fra
 6. To run [`6_agents_with_external_apis_demo.py`](#6_agents_with_external_apis_demopy---prompt-and-response), set the OPENAI_API_KEY env variable
 7. To run [`7_langgraph_demo.py`](#7_langgraph_demo---prompts-and-responses), set the OPENAI_API_KEY env variable
 8. To run [`8_langgraph_tavily_demo.py`](#8_langgraph_tavily_demo---prompts-and-responses), set the OPENAI_API_KEY and the TAVILY_API_KEY env variables
-9. To run [`9_pydantic_demo.py`],  set the OPENAI_API_KEY env variable
+9. To run [`9_pydantic_demo.py`](#9_pydantic_demo---prompts-and-responses),  set the OPENAI_API_KEY env variable
 
 Note about LangSmith - to be able to use LangSmith's tracing capabilities, you will have to set the following env variables:
 1. LANGCHAIN_TRACING_V2=true
@@ -146,7 +146,7 @@ Response:
 The weather in London is currently transitioning to milder, wetter, and windier conditions. For more detailed and up-to-date information, you can visit the [Met Office website](https://www.metoffice.gov.uk/weather/forecast/gcpvj0v07).
 ```
 
-## 9_pydantic_demo - prompts and response
+## 9_pydantic_demo - prompts and responses
 Prompt:
 ```commandline
 India wicketkeeper Rishabh Pant has been passed fit to play in the Indian Premier League (IPL) 
