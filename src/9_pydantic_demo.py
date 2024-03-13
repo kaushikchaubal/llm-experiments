@@ -1,4 +1,3 @@
-from langchain.output_parsers import JsonOutputToolsParser
 from langchain_core.utils.function_calling import convert_to_openai_function
 from pydantic import BaseModel, Field
 from langchain.prompts import ChatPromptTemplate
@@ -22,9 +21,9 @@ if __name__ == '__main__':
         ("user", "{input}")
     ])
 
-    model_with_functions = model.bind_tools(tagging_functions)
+    model_with_functions = model.bind_tools(tagging_functions, tool_choice="auto")
 
-    tagging_chain = prompt | model_with_functions | JsonOutputToolsParser()
+    tagging_chain = prompt | model_with_functions
 
     user_prompt = """India wicketkeeper Rishabh Pant has been passed fit to play in the Indian Premier League (IPL) 
     after a 14-month absence from cricket.
@@ -42,6 +41,6 @@ if __name__ == '__main__':
 
     response = tagging_chain.invoke({"input": user_prompt})
 
-    print(response[0]['args']['sentiment'])
+    print(response)
 
 
