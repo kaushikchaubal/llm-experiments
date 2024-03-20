@@ -12,7 +12,7 @@ This repo that captures experiments with OpenAI models and other LLM-related fra
 7. To run [`7_langgraph_demo.py`](#7_langgraph_demo---prompts-and-responses), set the OPENAI_API_KEY env variable
 8. To run [`8_langgraph_tavily_demo.py`](#8_langgraph_tavily_demo---prompts-and-responses), set the OPENAI_API_KEY and the TAVILY_API_KEY env variables
 9. To run [`9_pydantic_demo.py`](#9_pydantic_demo---prompts-and-responses),  set the OPENAI_API_KEY env variable
-10. To run {`10_agents_with_chainlit_demo.py`](#10_agents_with_chainlit_demo---prompts-and-responses),  set the OPENAI_API_KEY env variable
+10. To run [`10_agents_with_chainlit_demo.py`](#10_agents_with_chainlit_demo---prompts-and-responses),  set the OPENAI_API_KEY env variable
 
 Note about LangSmith - to be able to use LangSmith's tracing capabilities, you will have to set the following env variables:
 1. LANGCHAIN_TRACING_V2=true
