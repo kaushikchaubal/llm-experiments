@@ -170,7 +170,7 @@ Response:
 {"sentiment":"Positive sentiment","language":"en"}
 ```
 
-## 10_agents_with_chainlit_demo.py - prompts and responses
+## 10_agents_with_chainlit_demo - prompts and responses
 Prompt:
 ```commandline
 what is cube root of 81? Multiply with 13.27, and subtract 5.
