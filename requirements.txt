@@ -7,3 +7,5 @@ tavily-python
 langgraph~=0.0.26
 langchain-community
 requests~=2.31.0
+numexpr
+wikipedia`
