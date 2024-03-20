@@ -8,6 +8,7 @@ The intent of this file is to list some of the interesting/relevant resources li
 2. https://huggingface.co/blog/hrishioa/retrieval-augmented-generation-2-walking
 3. https://huggingface.co/blog/hrishioa/retrieval-augmented-generation-3-structure
 4. https://lilianweng.github.io/posts/2023-06-23-agent/
+5. https://towardsdatascience.com/building-a-math-application-with-langchain-agents-23919d09a4d3
 
 ## Videos 
 
