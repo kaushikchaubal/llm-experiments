@@ -5,6 +5,7 @@ from langchain.prompts import PromptTemplate
 from langchain_community.utilities import WikipediaAPIWrapper
 from langchain.agents.agent_types import AgentType
 from langchain.agents import Tool, initialize_agent
+from chainlit.cli import run_chainlit
 
 
 @cl.on_chat_start
@@ -64,3 +65,7 @@ async def process_user_query(message: cl.Message):
                                  callbacks=[cl.AsyncLangchainCallbackHandler()])
 
     await cl.Message(response["output"]).send()
+
+
+if __name__ == "__main__":
+    run_chainlit(__file__)
